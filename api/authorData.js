@@ -26,13 +26,23 @@ const getSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
 });
 
 // FIXME: DELETE AUTHOR
-const deleteSingleAuthor = () => {};
+const deleteSingleAuthor = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/authors/${firebaseKey}.json`)
+    .then(() => {
+      getAuthors().then((authorsArr) => resolve(authorsArr));
+    })
+    .catch((error) => reject(error));
+});
 
 // FIXME: UPDATE AUTHOR
 const updateAuthor = () => {};
 
 // TODO: GET A SINGLE AUTHOR'S BOOKS
-const getAuthorBooks = () => {};
+const getAuthorBooks = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/books.json?orderBy="author_id"&equalTo="${firebaseKey}"`)
+    .then((authorsBooksArr) => resolve(Object.values(authorsBooksArr.data)))
+    .catch((error) => reject(error));
+});
 
 export {
   getAuthors,
