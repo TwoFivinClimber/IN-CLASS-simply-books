@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { deleteAuthorBooks } from '../api/mergedData';
 
 export default function AuthorCard({
@@ -15,12 +15,15 @@ export default function AuthorCard({
 
   return (
     <>
-      <div>Email: {email}</div>
-      <div>Firebase Key: { firebaseKey }</div>
-      <div>First Name: {firstName}</div>
-      <div>Last Name: {lastName}</div>
-      <div>Favorite: {favorite.toString}</div>
-      <Button variant="danger" className="m-2" onClick={deleteThisAuthor}>Delete</Button>
+      <Card>
+        <Card.Header>Author</Card.Header>
+        <Card.Body>
+          <Card.Title>{firstName} {lastName}</Card.Title>
+          <Card.Text>{email}</Card.Text>
+          <Card.Text>{favorite ? 'Favorite Author' : ''}</Card.Text>
+          <Button variant="danger" className="m-2" onClick={deleteThisAuthor}>Delete</Button>
+        </Card.Body>
+      </Card>
     </>
   );
 }
