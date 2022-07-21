@@ -16,6 +16,12 @@ const getBooks = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
+const getAllBooks = () => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/books.json`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((reject));
+});
+
 const deleteBook = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/books/${firebaseKey}.json`)
     .then(() => resolve('deleted'))
@@ -45,6 +51,7 @@ const updateBook = (bookObj) => new Promise((resolve, reject) => {
 
 export {
   getBooks,
+  getAllBooks,
   createBook,
   deleteBook,
   getSingleBook,

@@ -2,9 +2,17 @@
 
 body {
   background-color: black;
+  color: lightslategrey
 }
 
 .profile-img {
   border-radius: 50%;
   width: 30px;
+}
+.cardButtons{
+  display: flex;
+}
+.m-2{
+  width: 2.5em;
+  height: 2.5em;
 }
