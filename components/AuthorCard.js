@@ -2,11 +2,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
+import Link from 'next/link';
 import { deleteAuthorBooks } from '../api/mergedData';
 
-export default function AuthorCard({
+function AuthorCard({
   email, firebaseKey, firstName, lastName, favorite, onUpdate,
 }) {
+  console.warn(firebaseKey);
   const deleteThisAuthor = () => {
     if (window.confirm(`Do you want to delete ${firstName} ?`)) {
       deleteAuthorBooks(firebaseKey).then(() => onUpdate());
@@ -14,17 +16,24 @@ export default function AuthorCard({
   };
 
   return (
-    <>
-      <Card>
-        <Card.Header>Author</Card.Header>
-        <Card.Body>
-          <Card.Title>{firstName} {lastName}</Card.Title>
-          <Card.Text>{email}</Card.Text>
-          <Card.Text>{favorite ? 'Favorite Author' : ''}</Card.Text>
-          <Button variant="danger" className="m-2" onClick={deleteThisAuthor}>Delete</Button>
-        </Card.Body>
-      </Card>
-    </>
+    <Card style={{ width: '18rem', margin: '20px' }}>
+      <Card.Body>
+        <Card.Title>{firstName} {lastName}</Card.Title>
+        <Card.Text>{email}</Card.Text>
+        <Card.Text>{favorite ? 'Favorite Author' : ''}</Card.Text>
+      </Card.Body>
+      <div className="cardButtons">
+        <Link href={`/author/${firebaseKey}`} passHref>
+          <Button variant="primary" className="m-2">V</Button>
+        </Link>
+        <Link href={`/author/edit/${firebaseKey}`} passHref>
+          <Button variant="info" className="m-2">E</Button>
+        </Link>
+        <Button variant="danger" onClick={deleteThisAuthor} className="m-2">
+          D
+        </Button>
+      </div>
+    </Card>
   );
 }
 
@@ -40,3 +49,5 @@ AuthorCard.propTypes = {
 AuthorCard.defaultProps = {
   favorite: true,
 };
+
+export default AuthorCard;

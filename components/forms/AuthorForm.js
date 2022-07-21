@@ -34,11 +34,11 @@ function AuthorForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateAuthor(formInput).then(() => router.push('/'));
+      updateAuthor(formInput).then(() => router.push('/authors'));
     } else {
       const authorObj = { ...formInput, uid: user.uid };
       createAuthor(authorObj).then(() => {
-        router.push('/');
+        router.push('/authors');
       });
     }
   };
@@ -48,13 +48,13 @@ function AuthorForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Author</h2>
       <FloatingLabel controlId="floatingInput1" label="Author First Name" className="mb-3">
-        <Form.Control type="text" placeholder="Author First Name" name="first_name" value={formInput.title} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="Author First Name" name="first_name" value={formInput.first_name} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput2" label="Author Last Name" className="mb-3">
-        <Form.Control type="text" placeholder="Author Last Name" name="last_name" value={formInput.image} onChange={handleChange} required />
+        <Form.Control type="text" placeholder="Author Last Name" name="last_name" value={formInput.last_name} onChange={handleChange} required />
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput3" label="Author Email" className="mb-3">
-        <Form.Control type="email" placeholder="Author Email" name="email" value={formInput.price} onChange={handleChange} required />
+        <Form.Control type="email" placeholder="Author Email" name="email" value={formInput.email} onChange={handleChange} required />
       </FloatingLabel>
 
       <Form.Check

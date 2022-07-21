@@ -20,16 +20,14 @@ function BookCard({ bookObj, onUpdate }) {
       <Card.Body>
         <Card.Title>{bookObj.title}</Card.Title>
         <p className="card-text bold">{bookObj.sale && <span>SALE<br /></span> } ${bookObj.price}</p>
-        {/* DYNAMIC LINK TO VIEW THE BOOK DETAILS  */}
         <Link href={`/book/${bookObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">VIEW</Button>
+          <Button variant="primary" className="m-2">V</Button>
         </Link>
-        {/* DYNAMIC LINK TO EDIT THE BOOK DETAILS  */}
         <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button variant="info">E</Button>
         </Link>
         <Button variant="danger" onClick={deleteThisBook} className="m-2">
-          DELETE
+          D
         </Button>
       </Card.Body>
     </Card>
