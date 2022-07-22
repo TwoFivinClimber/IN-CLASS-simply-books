@@ -2,7 +2,7 @@
 
 body {
   background-color: black;
-  color: lightslategrey
+  color: #023047;
 }
 
 .profile-img {
@@ -15,4 +15,15 @@ body {
 .m-2{
   width: 2.5em;
   height: 2.5em;
+}
+.authCards{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.profileImg{
+  height: 150px;
+  width: auto;
+  border-radius: 10px;
 }

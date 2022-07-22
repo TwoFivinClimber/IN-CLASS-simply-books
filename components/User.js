@@ -1,16 +1,24 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
+import { Card, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import Router from 'next/router';
 
 function User({
   name, email, image, lastLogin,
 }) {
   return (
     <>
-      <div>Name: {name}</div>
-      <div>Email: {email}</div>
-      <img src={image} alt={name} />
-      <div>Last Login: {lastLogin} </div>
+      <Card className="profile text-center">
+        <Card.Header>Your Profile</Card.Header>
+        <Card.Body>
+          <Card.Img variant="top" src={image} alt={name} className="profileImg" />
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>{email}</Card.Text>
+          <Button variant="primary" onClick={() => Router.push('/')}>Home</Button>
+        </Card.Body>
+        <Card.Footer className="text-muted">Last Login: {lastLogin}</Card.Footer>
+      </Card>
     </>
   );
 }

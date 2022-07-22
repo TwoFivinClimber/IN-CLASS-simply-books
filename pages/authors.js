@@ -14,14 +14,14 @@ function Authors() {
   useEffect(() => {
     getAllAuthors();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [authors]);
 
   return (
-    <>
+    <div className="authCards">
       {authors.map((author) => (
         <AuthorCard key={author.firebaseKey} email={author.email} firebaseKey={author.firebaseKey} firstName={author.first_name} lastName={author.last_name} favorite={author.favorite} onUpdate={getAllAuthors} />
       ))}
-    </>
+    </div>
   );
 }
 

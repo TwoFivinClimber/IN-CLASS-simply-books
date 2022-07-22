@@ -3,12 +3,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line no-unused-vars
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash, faPenToSquare, faEye } from '@fortawesome/free-solid-svg-icons';
 import { deleteAuthorBooks } from '../api/mergedData';
 
 function AuthorCard({
   email, firebaseKey, firstName, lastName, favorite, onUpdate,
 }) {
-  console.warn(firebaseKey);
   const deleteThisAuthor = () => {
     if (window.confirm(`Do you want to delete ${firstName} ?`)) {
       deleteAuthorBooks(firebaseKey).then(() => onUpdate());
@@ -24,13 +27,17 @@ function AuthorCard({
       </Card.Body>
       <div className="cardButtons">
         <Link href={`/author/${firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">V</Button>
+          <Button variant="primary" className="m-2">
+            <FontAwesomeIcon icon={faEye} />
+          </Button>
         </Link>
         <Link href={`/author/edit/${firebaseKey}`} passHref>
-          <Button variant="info" className="m-2">E</Button>
+          <Button variant="info" className="m-2">
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </Button>
         </Link>
         <Button variant="danger" onClick={deleteThisAuthor} className="m-2">
-          D
+          <FontAwesomeIcon icon={faTrash} />
         </Button>
       </div>
     </Card>

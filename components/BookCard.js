@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Link from 'next/link';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// eslint-disable-next-line no-unused-vars
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTrash, faPenToSquare, faEye } from '@fortawesome/free-solid-svg-icons';
 import { deleteBook } from '../api/bookData';
 
 function BookCard({ bookObj, onUpdate }) {
@@ -21,13 +25,17 @@ function BookCard({ bookObj, onUpdate }) {
         <Card.Title>{bookObj.title}</Card.Title>
         <p className="card-text bold">{bookObj.sale && <span>SALE<br /></span> } ${bookObj.price}</p>
         <Link href={`/book/${bookObj.firebaseKey}`} passHref>
-          <Button variant="primary" className="m-2">V</Button>
+          <Button variant="primary" className="m-2">
+            <FontAwesomeIcon icon={faEye} />
+          </Button>
         </Link>
         <Link href={`/book/edit/${bookObj.firebaseKey}`} passHref>
-          <Button variant="info">E</Button>
+          <Button variant="info">
+            <FontAwesomeIcon icon={faPenToSquare} />
+          </Button>
         </Link>
-        <Button variant="danger" onClick={deleteThisBook} className="m-2">
-          D
+        <Button className="m-2" variant="danger" onClick={deleteThisBook}>
+          <FontAwesomeIcon icon={faTrash} />
         </Button>
       </Card.Body>
     </Card>
