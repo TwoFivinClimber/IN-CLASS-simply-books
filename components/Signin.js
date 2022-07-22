@@ -13,7 +13,7 @@ function Signin() {
         margin: '0 auto',
       }}
     >
-      <h1 className="welcome">Welcome to Simple Books</h1>
+      <h1 className="welcome">Welcome to Books Sampler</h1>
       <p className="welcome">Click the button below to login!</p>
       <Button type="button" size="lg" className="copy-btn" onClick={signIn}>
         Sign In
