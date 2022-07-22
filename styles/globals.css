@@ -5,6 +5,10 @@ body {
   color: #023047;
 }
 
+.welcome{
+  color: #c9ada7;
+}
+
 .profile-img {
   border-radius: 50%;
   width: 30px;
